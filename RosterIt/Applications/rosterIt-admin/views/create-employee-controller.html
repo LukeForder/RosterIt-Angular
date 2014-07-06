@@ -1,0 +1,35 @@
+﻿<a class="btn btn-info back-btn" ng-click="cancelCreation()">
+    <i class="fa fa-arrow-left"></i>
+    employees
+</a>
+<div class="container" style="padding-top: 1em;">
+    <form name="employeeDetailsForm">
+        <fieldset>
+            <legend>
+                <i class="fa fa-users text-info"></i> New Employee
+            </legend>
+            <div class="form-group">
+                <label for="employeeCompanyNumber">Company Number</label>
+                <input type="text" class="form-control" id="employeeCompanyNumber" placeholder="company number" ng-model="employee.companyNumber" required>
+            </div>
+            <div class="form-group">
+                <label for="employeeName">Full Name</label>
+                <input type="text" class="form-control" id="guardName" placeholder="full name" ng-model="employee.fullName" required>
+            </div>
+
+            <div class="form-group">
+                <label>Site</label>
+
+                <ul class="list-group list-unstyled" >
+                    <li>
+                        <a ng-repeat="site in sites" style="cursor: pointer;" ng-click="onSiteSelected(site)" class="list-group-item" ng-class="{'active':employee.siteId === site.id}">{{site.name}}</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="form-group">
+                <button title="hello" value="Submit" class="btn btn-primary" ng-disabled="!employee.isValid()" ng-click="completeCreation()">create</button>
+            </div>
+        </fieldset>
+    </form>
+</div>
+<toaster-container></toaster-container>

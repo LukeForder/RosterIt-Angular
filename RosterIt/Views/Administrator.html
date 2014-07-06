@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="rosterItAdministration">
+<head>
+    <title>RosterIt | Admin</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <link href="/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="/Content/ngprogress-lite.css" rel="stylesheet" />
+    <link href="/Content/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="/Content/toaster.css" rel="stylesheet" />
+    <link href="/Content/site.css" rel="stylesheet" />
+</head>
+<body ng-cloak>
+    <nav class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Brand</a>
+            </div>
+        </div>
+    </nav>
+    <ng-view></ng-view>
+    <script src="/Scripts/uuid.js"></script>
+    <script src="/Scripts/jquery-1.9.0.min.js"></script>
+    <script src="/Scripts/bootstrap.min.js"></script>
+    <script src="/Applications/directives/confirmationDialog/confirmationDialog.js"></script>
+    <script src="/Scripts/angular.min.js"></script>
+    <script src="/Scripts/angular-animate.min.js"></script>
+    <script src="/Scripts/toaster.js"></script>
+    <script src="/Scripts/ngprogress-lite.min.js"></script>
+    <script src="/Scripts/angular-route.min.js"></script>
+    <script src="/Scripts/angular-ui/ui-bootstrap.min.js"></script>
+    <script src="/Scripts/angular-ui/ui-bootstrap-tpls.min.js"></script>
+    <script src="/Applications/rosterIt-admin/models/Site.js"></script>
+    <script src="/Applications/rosterIt-admin/models/employee.js"></script>
+    <script src="/Applications/rosterIt-admin/RosterItAdminModule.js"></script>
+    <script src="/Applications/interceptors/ShowProgressInterceptor.js"></script>
+    <script src="/Applications/rosterIt-admin/services/EmployeeService.js"></script>
+    <script src="/Applications/rosterIt-admin/controllers/createEmployeeController.js"></script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+C:\Users\Luke\Documents\GitHub\RosterIt-Angular\RosterIt.Contexts.Company.Data.Interfaces\bin\Debug\RosterIt.Contexts.Company.Data.Interfaces.dll
+C:\Users\Luke\Documents\GitHub\RosterIt-Angular\RosterIt.Contexts.Company.Data.Interfaces\bin\Debug\RosterIt.Contexts.Company.Data.Interfaces.pdb
+C:\Users\Luke\Documents\GitHub\RosterIt-Angular\RosterIt.Contexts.Company.Data.Interfaces\bin\Debug\RosterIt.Contexts.Company.dll
+C:\Users\Luke\Documents\GitHub\RosterIt-Angular\RosterIt.Contexts.Company.Data.Interfaces\bin\Debug\RosterIt.Contexts.Company.pdb
+C:\Users\Luke\Documents\GitHub\RosterIt-Angular\RosterIt.Contexts.Company.Data.Interfaces\obj\Debug\RosterIt.Contexts.Company.Data.Interfaces.csprojResolveAssemblyReference.cache
+C:\Users\Luke\Documents\GitHub\RosterIt-Angular\RosterIt.Contexts.Company.Data.Interfaces\obj\Debug\RosterIt.Contexts.Company.Data.Interfaces.dll
+C:\Users\Luke\Documents\GitHub\RosterIt-Angular\RosterIt.Contexts.Company.Data.Interfaces\obj\Debug\RosterIt.Contexts.Company.Data.Interfaces.pdb
+C:\Users\Luke\Documents\GitHub\RosterIt-Angular\RosterIt.Contexts.Company.Data.Interfaces\bin\Debug\Common.Logging.Core.dll
+C:\Users\Luke\Documents\GitHub\RosterIt-Angular\RosterIt.Contexts.Company.Data.Interfaces\bin\Debug\Common.Logging.dll
+C:\Users\Luke\Documents\GitHub\RosterIt-Angular\RosterIt.Contexts.Company.Data.Interfaces\bin\Debug\Common.Logging.pdb
+C:\Users\Luke\Documents\GitHub\RosterIt-Angular\RosterIt.Contexts.Company.Data.Interfaces\bin\Debug\Common.Logging.xml
+C:\Users\Luke\Documents\GitHub\RosterIt-Angular\RosterIt.Contexts.Company.Data.Interfaces\bin\Debug\Common.Logging.Core.pdb
+C:\Users\Luke\Documents\GitHub\RosterIt-Angular\RosterIt.Contexts.Company.Data.Interfaces\bin\Debug\Common.Logging.Core.xml
