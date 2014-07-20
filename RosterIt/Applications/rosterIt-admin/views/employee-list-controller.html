@@ -1,0 +1,45 @@
+﻿<style>
+    .btn.bump {
+        margin-top: 5px;
+    }
+</style>
+<div class="container" style="padding-top: 1em;">
+    <div class="page-header">
+        <h1>Employees <span class="pull-right"><button class="btn btn-primary text-right bump" data-ng-click="create()">Create</button></span></h1>
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th class="col-lg-2">
+                    Company No.
+                </th>
+                <th class="col-lg-6">
+                    Full Name
+                </th>
+                <th class="col-lg-2">
+                    Site
+                </th>
+                <th class="col-lg-2">
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr data-ng-repeat="employee in employees">
+                <td class="col-lg-2">
+                    {{employee.companyNumber}}
+                </td>
+                <td class="col-lg-6">
+                    {{employee.companyNumber}}
+                </td>
+                <td class="col-lg-2">
+                    {{employee.companyNumber}}
+                </td>
+                <td class="col-lg-2 text-right">
+                    <button class="btn btn-link btn-sm" data-ng-click="delete(employee)">delete</button>
+                    <button class="btn btn-link btn-sm" data-ng-click="edit(employee)">edit</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<toaster-container></toaster-container>

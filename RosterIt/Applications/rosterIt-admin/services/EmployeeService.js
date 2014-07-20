@@ -7,10 +7,27 @@ var rosterIt;
                 this.http = $http;
                 this.q = $q;
             }
+            EmployeeService.prototype.delete = function (employee) {
+                var task = this.q.defer();
+
+                this.http.delete('/api/admin/employees/' + encodeURIComponent(employee.id), {
+                    headers: {
+                        "Accept": "application/json"
+                    }
+                }).success(function () {
+                    task.resolve();
+                }).error(function (response, status) {
+                    console.error({ response: response, status: status });
+                    task.reject(response);
+                });
+
+                return task.promise;
+            };
+
             EmployeeService.prototype.create = function (employee) {
                 var task = this.q.defer();
 
-                this.http.post('api/employee', employee, {
+                this.http.post('/api/admin/employees', employee, {
                     headers: {
                         "Accept": "application/json",
                         "Content-Type": "application/json"
@@ -19,7 +36,7 @@ var rosterIt;
                     task.resolve(employee);
                 }).error(function (response, status) {
                     console.error({ response: response, status: status });
-                    task.reject(response.reason);
+                    task.reject(response);
                 });
 
                 return task.promise;

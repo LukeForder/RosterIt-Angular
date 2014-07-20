@@ -10,6 +10,8 @@ using Ninject;
 using RosterIt.Contexts.Company.Data.Interfaces;
 using RosterIt.Contexts.Company.Data;
 using Nancy.Conventions;
+using Newtonsoft.Json;
+using RosterIt.Infrastructure;
 
 namespace RosterIt.StartUp
 {
@@ -18,6 +20,10 @@ namespace RosterIt.StartUp
         protected override void ConfigureApplicationContainer(Ninject.IKernel existingContainer)
         {
             base.ConfigureApplicationContainer(existingContainer);
+
+            existingContainer
+                .Bind<JsonSerializer>()
+                .To<CamelCaseJsonSerializer>();
         }
 
         protected override void ConfigureRequestContainer(Ninject.IKernel container, Nancy.NancyContext context)

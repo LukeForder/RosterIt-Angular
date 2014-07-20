@@ -16,13 +16,22 @@
                 '$routeProvider',
                 function ($routeProvider) {
                     $routeProvider.
+                        when('/employees',
+                        {
+                            controller: 'employeeListController',
+                            templateUrl: '../applications/rosterIt-admin/views/employee-list-controller.html'
+                        }).
                         when('/employees/create',
                         {
                             controller: 'createEmployeeController',
                             templateUrl: '../applications/rosterIt-admin/views/create-employee-controller.html'
-                        }
-                        )
-                        .otherwise({
+                        }).
+                        when('/sites/create',
+                        {
+                            controller: 'createSiteController',
+                            templateUrl: '../applications/rosterIt-admin/views/create-site-controller.html'
+                        }).
+                        otherwise({
 
                         });
                 }
@@ -52,6 +61,36 @@
                 (toasterConfig: angularjs.toaster.IConfigurationOptions) => {
                     toasterConfig.limit = 1;
                 }
+            ]).
+            factory(
+                'siteService',
+                [
+                '$q',
+                '$http',
+                ($q, $http) => new admin.SiteService($q, $http)
+                ]
+            ).
+            controller(
+            'createSiteController',
+            [
+                '$scope',
+                'siteService',
+                'toaster',
+                'confirmationDialog',
+                '$location',
+                ($scope, siteService, toaster, confirmationDialog, $location) =>
+                    new rosterIt.admin.site.CreateSiteController($scope, siteService, toaster, confirmationDialog, $location)
+            ]).
+            controller(
+            'employeeListController',
+            [
+                '$scope',
+                'employeeService',
+                'confirmationDialog',
+                'toaster',
+                '$location',
+                ($scope, employeeService, confirmationDialog, toaster, $location) => new
+                    rosterIt.admin.employees.EmployeeListController($scope, employeeService, confirmationDialog, toaster, $location)
             ]);
 
 

@@ -5,18 +5,21 @@
             
 
             var CreateEmployeeController = (function () {
-                function CreateEmployeeController($scope, confirmationDialog, employeeService, $location, toaster) {
+                function CreateEmployeeController($scope, confirmationDialog, employeeService, $location, toaster, siteService) {
                     this.scope = $scope;
                     this.confirmationDialog = confirmationDialog;
                     this.location = $location;
                     this.employeeService = employeeService;
                     this.toaster = toaster;
+                    this.siteService = siteService;
 
                     $scope.employee = new admin.Employee(null, null);
-                    $scope.sites = [new admin.Site("Site A", "1234"), new admin.Site("Site B", "2345")];
+                    $scope.sites = new admin.ResultSet();
                     $scope.cancelCreation = this.cancelCreation.bind(this);
                     $scope.completeCreation = this.createEmployee.bind(this);
                     $scope.onSiteSelected = this.siteSelected.bind(this);
+
+                    this.loadSites(0);
                 }
                 CreateEmployeeController.prototype.siteSelected = function (site) {
                     this.scope.employeeDetailsForm.$setDirty();
@@ -28,6 +31,16 @@
                     }
                 };
 
+                CreateEmployeeController.prototype.loadSites = function (page) {
+                    var _this = this;
+                    this.scope.loadingSites = true;
+                    this.siteService.get(page, 10).then(function (sites) {
+                        _this.scope.sites = sites;
+                    }).finally(function () {
+                        _this.scope.loadingSites = false;
+                    });
+                };
+
                 CreateEmployeeController.prototype.goToEmployees = function () {
                     this.location.path('/employees');
                 };
@@ -37,8 +50,9 @@
                     this.toaster.pop('wait', 'Submitting', 'Creating the employee, please be patient');
 
                     this.employeeService.create(employee).then(function (employee) {
-                    }, function (reason) {
-                        _this.toaster.pop("error", "Whoops!", reason);
+                        _this.scope.employee = new admin.Employee(null, null);
+                    }, function (reasons) {
+                        _this.toaster.pop("error", "Whoops!", "Unable to create the employee because; " + reasons.join(', '));
                     });
                 };
 
@@ -56,8 +70,8 @@
             })();
 
             // register the controller
-            admin.Module.controller('createEmployeeController', ['$scope', 'confirmationDialog', 'employeeService', '$location', 'toaster', function ($scope, confirmationDialog, employeeService, $location, toaster) {
-                    return new CreateEmployeeController($scope, confirmationDialog, employeeService, $location, toaster);
+            admin.Module.controller('createEmployeeController', ['$scope', 'confirmationDialog', 'employeeService', '$location', 'toaster', 'siteService', function ($scope, confirmationDialog, employeeService, $location, toaster, siteService) {
+                    return new CreateEmployeeController($scope, confirmationDialog, employeeService, $location, toaster, siteService);
                 }]);
         })(admin.employees || (admin.employees = {}));
         var employees = admin.employees;

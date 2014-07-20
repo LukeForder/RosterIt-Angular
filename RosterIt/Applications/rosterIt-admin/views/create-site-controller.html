@@ -1,0 +1,21 @@
+﻿<a class="btn btn-info back-btn" ng-click="cancelCreation()">
+    <i class="fa fa-arrow-left"></i>
+    sites
+</a>
+<div class="container" style="padding-top: 1em;">
+    <form name="employeeDetailsForm">
+        <fieldset>
+            <legend>
+                <i class="fa fa- text-info"></i> New Site
+            </legend>
+            <div class="form-group">
+                <label for="employeeCompanyNumber">Name</label>
+                <input type="text" class="form-control" id="employeeCompanyNumber" placeholder="site name" ng-model="site.name" required>
+            </div>
+            <div class="form-group">
+                <button value="Submit" class="btn btn-primary" ng-disabled="!isValid()" ng-click="completeCreation()">create</button>
+            </div>
+        </fieldset>
+    </form>
+</div>
+<toaster-container></toaster-container>

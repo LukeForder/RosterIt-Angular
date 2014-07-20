@@ -22,12 +22,12 @@
 
                 <ul class="list-group list-unstyled" >
                     <li>
-                        <a ng-repeat="site in sites" style="cursor: pointer;" ng-click="onSiteSelected(site)" class="list-group-item" ng-class="{'active':employee.siteId === site.id}">{{site.name}}</a>
+                        <a ng-repeat="site in sites.data" style="cursor: pointer;" ng-click="onSiteSelected(site)" class="list-group-item" ng-class="{'active':employee.siteId === site.id}">{{site.name}}</a>
                     </li>
                 </ul>
             </div>
             <div class="form-group">
-                <button title="hello" value="Submit" class="btn btn-primary" ng-disabled="!employee.isValid()" ng-click="completeCreation()">create</button>
+                <button title="hello" value="Submit" class="btn btn-primary" ng-disabled="!employee.isValid()" ng-click="completeCreation(employee)">create</button>
             </div>
         </fieldset>
     </form>

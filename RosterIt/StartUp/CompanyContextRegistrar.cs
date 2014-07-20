@@ -1,4 +1,5 @@
 ﻿using Ninject;
+using Ninject.Extensions.Factory;
 using RosterIt.Contexts.Company.Data;
 using RosterIt.Contexts.Company.Data.Interfaces;
 using System;
@@ -9,6 +10,9 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using Ninject.Web.Common;
+using FluentValidation;
+using RosterIt.Contexts.Company;
+using RosterIt.Contexts.Company.Validation;
 
 namespace RosterIt.StartUp
 {
@@ -36,7 +40,21 @@ namespace RosterIt.StartUp
                 .To<CompanyContext>()
                 .InRequestScope();
 
-            
+            container
+                .Bind<IValidator<Employee>>()
+                .To<EmployeeValidator>();
+
+            container
+                .Bind<IValidator<Site>>()
+                .To<SiteValidator>();
+
+            container
+                .Bind<IEmployeeValidatorFactory>()
+                .ToFactory();
+
+            container
+                .Bind<ISiteValidatorFactory>()
+                .ToFactory();
         }
     }
 }
