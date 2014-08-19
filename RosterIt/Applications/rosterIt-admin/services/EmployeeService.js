@@ -7,12 +7,31 @@ var rosterIt;
                 this.http = $http;
                 this.q = $q;
             }
+            EmployeeService.prototype.search = function (searchTerm) {
+                var task = this.q.defer();
+
+                this.http.get('/api/admin/employees' + (searchTerm ? ('?q=' + encodeURIComponent(searchTerm)) : ''), {
+                    headers: {
+                        "Accept": "application/json",
+                        "X-Requested-With": "XMLHttpRequest"
+                    }
+                }).success(function (employees) {
+                    task.resolve(employees);
+                }).error(function (response, status) {
+                    console.error({ response: response, status: status });
+                    task.reject(response);
+                });
+
+                return task.promise;
+            };
+
             EmployeeService.prototype.delete = function (employee) {
                 var task = this.q.defer();
 
                 this.http.delete('/api/admin/employees/' + encodeURIComponent(employee.id), {
                     headers: {
-                        "Accept": "application/json"
+                        "Accept": "application/json",
+                        "X-Requested-With": "XMLHttpRequest"
                     }
                 }).success(function () {
                     task.resolve();

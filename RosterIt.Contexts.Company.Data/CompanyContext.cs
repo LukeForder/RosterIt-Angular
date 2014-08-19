@@ -133,24 +133,24 @@ namespace RosterIt.Contexts.Company.Data
             EmployeeSet.AddRange(employees);
         }
 
-        private void RemoveEmployees(IEnumerable<Employee> employees)
+        private async Task RemoveEmployees(IEnumerable<Guid> employeeIds)
         {
+            IList<Employee> employees = 
+                await EmployeeSet
+                .Where(x => employeeIds.Contains(x.Id))
+                .ToListAsync();
+
             EmployeeSet.RemoveRange(employees);
         }
 
-        void ICompanyUnitOfWork.RemoveEmployees(IEnumerable<Employee> employees)
+        async Task ICompanyUnitOfWork.RemoveEmployees(IEnumerable<Employee> employees)
         {
-            RemoveEmployees(employees);
+            await RemoveEmployees(employees.Select(x => x.Id).ToArray());
         }
 
-        void ICompanyUnitOfWork.RemoveEmployees(IEnumerable<Guid> employeeIds)
+        async Task ICompanyUnitOfWork.RemoveEmployees(IEnumerable<Guid> employeeIds)
         {
-            var employees =
-                employeeIds
-                .Select(id => new Employee { Id = id })
-                .ToArray();
-
-            RemoveEmployees(employees);
+            await RemoveEmployees(employeeIds);
         }
 
         IQueryable<Site> Interfaces.ICompanyQueryContext.Sites

@@ -16,7 +16,7 @@ namespace RosterIt.Contexts.Company.Data.Interfaces
         void RemoveSites(IEnumerable<Guid> siteIds);
 
         void AddEmployees(IEnumerable<Employee> employees);
-        void RemoveEmployees(IEnumerable<Employee> employees);
-        void RemoveEmployees(IEnumerable<Guid> employeeIds);
+        Task RemoveEmployees(IEnumerable<Employee> employees);
+        Task RemoveEmployees(IEnumerable<Guid> employeeIds);
     }
 }

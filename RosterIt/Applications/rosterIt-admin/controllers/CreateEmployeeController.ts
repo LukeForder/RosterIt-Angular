@@ -96,7 +96,7 @@
             if (this.scope.employeeDetailsForm.$dirty) {
                 this.confirmationDialog.showDialog(
                     "You are leaving the page!",
-                    "There are unsaved changes that have been made to the new employee, if you leave the page these will all be lost. Are you sure you want to continue?")
+                    "There are unsaved changes, if you leave the page these will all be lost. Are you sure you want to continue?")
                 .then(
                     () => {
                         this.goToEmployees();

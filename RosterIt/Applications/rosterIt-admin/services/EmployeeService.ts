@@ -10,6 +10,29 @@ module rosterIt.admin {
             this.q = $q;
         }
 
+        public search(searchTerm: string): ng.IPromise<Employee[]> {
+            var task = this.q.defer();
+
+            this.http.get(
+                '/api/admin/employees' + (searchTerm ? ('?q=' +encodeURIComponent(searchTerm)) : ''),
+                {
+                    headers: {
+                        "Accept": "application/json",
+                        "X-Requested-With": "XMLHttpRequest"
+                    }
+                }).success(
+                (employees) => {
+                    task.resolve(employees);
+                }
+                ).error(
+                (response: string[], status: number) => {
+                    console.error({ response: response, status: status });
+                    task.reject(response);
+                });
+
+            return task.promise;
+        }
+
         public delete(employee: Employee): ng.IPromise<any> {
             var task = this.q.defer();
 
@@ -17,7 +40,8 @@ module rosterIt.admin {
                 '/api/admin/employees/' + encodeURIComponent(employee.id),
                 {
                     headers: {
-                        "Accept": "application/json"
+                        "Accept": "application/json",
+                        "X-Requested-With": "XMLHttpRequest"
                     }
                 }).success(
                 () => {

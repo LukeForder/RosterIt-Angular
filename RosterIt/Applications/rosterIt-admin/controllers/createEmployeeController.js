@@ -51,6 +51,7 @@
 
                     this.employeeService.create(employee).then(function (employee) {
                         _this.scope.employee = new admin.Employee(null, null);
+                        _this.toaster.pop('success', 'Success!', 'Employee, "' + employee.companyNumber + '" saved to the server.');
                     }, function (reasons) {
                         _this.toaster.pop("error", "Whoops!", "Unable to create the employee because; " + reasons.join(', '));
                     });
@@ -59,7 +60,7 @@
                 CreateEmployeeController.prototype.cancelCreation = function () {
                     var _this = this;
                     if (this.scope.employeeDetailsForm.$dirty) {
-                        this.confirmationDialog.showDialog("You are leaving the page!", "There are unsaved changes that have been made to the new employee, if you leave the page these will all be lost. Are you sure you want to continue?").then(function () {
+                        this.confirmationDialog.showDialog("You are leaving the page!", "There are unsaved changes, if you leave the page these will all be lost. Are you sure you want to continue?").then(function () {
                             _this.goToEmployees();
                         });
                     } else {
